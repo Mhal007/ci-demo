@@ -15,6 +15,7 @@ on:
 jobs:
   pre_merge_check:
     name: Pre merge check
+    runs-on: ubuntu@latest
     steps:
       - name: Clone the code
         uses: actions/checkout@v3
