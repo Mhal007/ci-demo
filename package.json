@@ -8,7 +8,7 @@
     "start": "react-scripts start",
     "start-with-e2e": "npm run start & wait-on http://localhost:3000 && npm run e2e",
     "test": "react-scripts test",
-    "e2e-when-ready": "start-server-and-test start http-get://localhost:3000 e2e"
+    "e2e-when-ready": "npx start-server-and-test start 3000 npm run e2e"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
