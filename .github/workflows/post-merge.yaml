@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  setup:
+  e2e:
     name: Setup the project and run E2E
     runs-on: ubuntu-latest
     steps:
