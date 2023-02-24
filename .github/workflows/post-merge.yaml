@@ -1,14 +1,36 @@
 name: Post-merge E2E check
 
 on:
-  pull_request:
   push:
     branches: [ main ]
   workflow_dispatch:
 
 jobs:
-  setup:
-    name: Project setup
+  e2e_group1:
+    name: E2E Group 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the code
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build the app
+        run: npm run build
+
+      - name: Run E2E tests
+        uses: cypress-io/github-action@v3
+        with:
+          start: npm run start
+          wait-on: "http://localhost:3000"
+          env: grep=@group1
+
+  e2e_group2:
+    name: E2E Group 2
     runs-on: ubuntu-latest
     steps:
       - name: Fetch the code
@@ -23,23 +45,6 @@ jobs:
       - name: Build the app
         run: npm run build
 
-  e2e_group1:
-    name: E2E Group 1
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run E2E tests
-        uses: cypress-io/github-action@v3
-        with:
-          start: npm run start
-          wait-on: "http://localhost:3000"
-          env: grep=@group1
-
-  e2e_group2:
-    name: E2E Group 2
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
       - name: Run E2E tests
         uses: cypress-io/github-action@v3
         with:
