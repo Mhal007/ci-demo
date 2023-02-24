@@ -7,7 +7,8 @@
     "e2e": "cypress run",
     "start": "react-scripts start",
     "start-with-e2e": "npm run start & wait-on http://localhost:3000 && npm run e2e",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "e2e-when-ready": "start-server-and-test start http-get://localhost:3000 e2e"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "cypress": "12.6.0",
+    "start-server-and-test": "1.15.4",
     "wait-on": "7.0.1"
   },
   "eslintConfig": {
