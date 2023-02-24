@@ -1,0 +1,28 @@
+name: Pre-merge on all PRs
+
+on:
+  pull_request:
+
+jobs:
+  pre_merge_check:
+    name: Pre merge check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the code
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        run: npm ci
+
+#      TODO eslint
+#      TODO test coverage
+
+      - name: Build the app
+        run: npm run build
+
+      - name: Run unit tests
+        run: npm run test
+

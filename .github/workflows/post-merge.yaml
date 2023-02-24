@@ -1,0 +1,28 @@
+name: Post-merge E2E check
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  setup:
+    name: Setup the project and run E2E
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the code
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build the app
+        run: npm run build
+
+      - name: Start the app
+        run: npm start
+
+      - name: Run E2E
+        run: npm run e2e-when-ready
