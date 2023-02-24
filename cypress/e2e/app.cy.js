@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('App tests', () => {
+describe('@group1 App tests', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/')
   })
