@@ -2,6 +2,7 @@ name: Pre-merge on all PRs
 
 on:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   pre_merge_check:
@@ -20,9 +21,8 @@ jobs:
       - name: Build the app
         run: npm run build
 
+      - name: Run eslint
+        run: npm run lint
+
       - name: Run unit tests
         run: npm run test
-
-#      TODO eslint
-#      TODO test coverage
-
