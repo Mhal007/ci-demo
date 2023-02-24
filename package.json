@@ -4,11 +4,9 @@
   "private": true,
   "scripts": {
     "build": "react-scripts build",
-    "e2e": "cypress run",
     "start": "react-scripts start",
-    "start-with-e2e": "npm run start & wait-on http://localhost:3000 && npm run e2e",
     "test": "react-scripts test",
-    "e2e-when-ready": "npx start-server-and-test start 3000 npm run e2e"
+    "e2e": "cypress run"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

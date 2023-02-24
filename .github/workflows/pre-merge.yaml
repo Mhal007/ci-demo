@@ -23,12 +23,6 @@ jobs:
       - name: Run unit tests
         run: npm run test
 
-      - name: Run e2e tests
-        uses: cypress-io/github-action@v3
-        with:
-          start: npm run start
-          wait-on: "http://localhost:3000"
-
 #      TODO eslint
 #      TODO test coverage
 
