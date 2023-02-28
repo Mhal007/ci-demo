@@ -1,11 +1,12 @@
-name: Pre-merge check new
+name: Post-merge check new
 
 on:
-  pull_request:
+  push:
+    branches: [ main ]
 
 jobs:
-  job_1:
-    name: Pre merge check
+  e2e:
+    name: E2E
     runs-on: ubuntu-latest
     steps:
       - name: Fetch the code
@@ -20,8 +21,8 @@ jobs:
       - name: Build the app
         run: npm run build
 
-      - name: Run eslint
-        run: npm run lint
-
-      - name: Run unit tests
-        run: npm run test
+      - name: Run E2E
+        uses: cypress-io/github-action@v3
+        with:
+          start: npm run start
+          wait-on: "http://localhost:3000"
