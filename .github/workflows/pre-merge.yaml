@@ -1,0 +1,27 @@
+name: Pre-merge check
+
+on:
+  pull_request:
+
+jobs:
+  job_1:
+    name: Pre merge check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch the code
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        uses: npm ci
+
+      - name: Build the app
+        uses: npm run build
+
+      - name: Run eslint
+        uses: npm run lint
+
+      - name: Run unit tests
+        uses: npm run test
