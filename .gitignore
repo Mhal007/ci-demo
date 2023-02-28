@@ -11,6 +11,10 @@
 # production
 /build
 
+# cypress
+/cypress/videos
+/cypress/screenshots
+
 # misc
 .idea/
 .DS_Store
