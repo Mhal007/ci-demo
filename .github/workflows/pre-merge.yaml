@@ -15,13 +15,13 @@ jobs:
         uses: actions/setup-node@v3
 
       - name: Install dependencies
-        uses: npm ci
+        run: npm ci
 
       - name: Build the app
-        uses: npm run build
+        run: npm run build
 
       - name: Run eslint
-        uses: npm run lint
+        run: npm run lint
 
       - name: Run unit tests
-        uses: npm run test
+        run: npm run test
